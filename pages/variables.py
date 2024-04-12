@@ -6,6 +6,8 @@ class Pages:
 
 
 class Titles:
-    title_main_page = "Automation Exercise"
+    MAIN_PAGE_TITLE = "Automation Exercise"
+    LOGIN_PAGE_TITLE = "Automation Exercise - Signup / Login"
+
 
 
