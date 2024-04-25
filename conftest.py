@@ -17,10 +17,14 @@ def generate_user_data():
     fake = faker.Faker()
     name = fake.name()
     email = fake.email()
-    gender = fake.random_element(elements=('Male', 'Female'))
+    title = fake.random_element(elements=('Mr', 'Mrs'))
     password = fake.password()
     date_of_birth = fake.date_of_birth(minimum_age=18, maximum_age=90)
-    return name, email, gender, password, date_of_birth
+    day_of_birth = fake.random_int(min=1, max=28)
+    month_of_birth = fake.random_int(min=1, max=12)
+    year_of_birth = fake.random_int(min=1900, max=2021)
+    return {"name": name, "email": email, "title": title, "password": password, "day_of_birth": day_of_birth,
+            "month_of_birth": month_of_birth, "year_of_birth": year_of_birth, "date_of_birth": date_of_birth}
 
 
 @pytest.fixture()
@@ -39,4 +43,3 @@ def generate_address_information_data():
     po_box = fake.random_number(digits=5)
     address = f"{street_address}, P.O. Box {po_box}, {company}"
     return first_name, last_name, company, address2, country, state, city, zipcode, mobile_number, address
-

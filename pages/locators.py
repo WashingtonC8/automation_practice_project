@@ -18,3 +18,9 @@ class BasePageLocators():
 
 class SignupPageLocators():
     ENTER_ACCOUNT_INFORMATION_LABEL = (By.XPATH, '//b[text()="Enter Account Information"]')
+    GENDER_MR_CHECKBOX = (By.CSS_SELECTOR, "[id='id_gender1']")
+    GENDER_MRS_CHECKBOX = (By.CSS_SELECTOR, "[id='id_gender2']")
+    PASSWORD_LABEL = (By.ID, "password")
+    DAY_OF_BIRTH_SELECT = (By.CSS_SELECTOR, '[data-qa="days"]')
+    MONTH_OF_BIRTH_SELECT = (By.CSS_SELECTOR, '[data-qa="months"]')
+    YEAR_OF_BIRTH_SELECT = (By.CSS_SELECTOR, '[data-qa="years"]')
