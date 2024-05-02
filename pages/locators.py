@@ -15,6 +15,7 @@ class MainPageLocators():
 class BasePageLocators():
     LOGIN_LINK = (By.XPATH, "//a[contains(text(), 'Signup / Login')]")
     LOGGED_NAME = (By.CSS_SELECTOR, "a > i.fa.fa-user + b")
+    DELETE_ACCOUNT_LINK = (By.CSS_SELECTOR, 'a[href="/delete_account"]')
 
 
 class SignupPageLocators():
@@ -45,3 +46,7 @@ class SignupPageLocators():
 class AccountCreatedLocators():
     ACCOUNT_CREATED_LABEL = (By.CSS_SELECTOR, '[data-qa="account-created"]')
     CONTINUE_BUTTON = (By.CSS_SELECTOR, '[data-qa="continue-button"]')
+
+
+class AccountDeleteLocators():
+    ACCOUNT_DELETE_LABEL = (By.CSS_SELECTOR, '[data-qa="account-deleted"]')
