@@ -14,6 +14,7 @@ class MainPageLocators():
 
 class BasePageLocators():
     LOGIN_LINK = (By.XPATH, "//a[contains(text(), 'Signup / Login')]")
+    LOGGED_NAME = (By.CSS_SELECTOR, "a > i.fa.fa-user + b")
 
 
 class SignupPageLocators():
@@ -24,3 +25,23 @@ class SignupPageLocators():
     DAY_OF_BIRTH_SELECT = (By.CSS_SELECTOR, '[data-qa="days"]')
     MONTH_OF_BIRTH_SELECT = (By.CSS_SELECTOR, '[data-qa="months"]')
     YEAR_OF_BIRTH_SELECT = (By.CSS_SELECTOR, '[data-qa="years"]')
+    NEWSLETTER_CHECKBOX = (By.ID, "newsletter")
+    OFFERS_FROM_PARTNERS_CHECKBOX = (By.ID, "optin")
+
+    FIRST_NAME_INPUT = (By.CSS_SELECTOR, '[data-qa="first_name"]')
+    LAST_NAME_INPUT = (By.CSS_SELECTOR, '[data-qa="last_name"]')
+    COMPANY_INPUT = (By.CSS_SELECTOR, '[data-qa="company"]')
+    ADDRESS_INPUT = (By.CSS_SELECTOR, '[data-qa="address"]')
+    ADDRESS_2_INPUT = (By.CSS_SELECTOR, '[data-qa="address2"]')
+    COUNTRY_SELECT = (By.ID, "country")
+    STATE_INPUT = (By.CSS_SELECTOR, '[data-qa="state"]')
+    CITY_INPUT = (By.CSS_SELECTOR, '[data-qa="city"]')
+    ZIPCODE_INPUT = (By.CSS_SELECTOR, '[data-qa="zipcode"]')
+    MOBILE_NUMBER_INPUT = (By.CSS_SELECTOR, '[data-qa="mobile_number"]')
+
+    CREATE_ACCOUNT_BUTTON = (By.CSS_SELECTOR, '[data-qa="create-account"]')
+
+
+class AccountCreatedLocators():
+    ACCOUNT_CREATED_LABEL = (By.CSS_SELECTOR, '[data-qa="account-created"]')
+    CONTINUE_BUTTON = (By.CSS_SELECTOR, '[data-qa="continue-button"]')

@@ -28,9 +28,3 @@ class LoginPage(BasePage):
     def click_sign_up_form_button(self):
         button_sign_up = self.browser.find_element(*LoginPageLocators.SIGN_UP_BUTTON)
         button_sign_up.click()
-
-    def enter_new_user_signup_form(self, name, email):
-        input_name = self.browser.find_element(*LoginPageLocators.NAME_INPUT_LOGIN_PAGE)
-        input_name.send_keys(name)
-        input_email = self.browser.find_element(*LoginPageLocators.EMAIL_INPUT_LOGIN_PAGE)
-        input_email.send_keys(email)
