@@ -33,11 +33,11 @@ class SignupPage(BasePage):
 
     def enter_date_of_birth_select(self, user_data=UserData):
         select_day = Select(self.browser.find_element(*SignupPageLocators.DAY_OF_BIRTH_SELECT))
-        select_day.select_by_value(str(user_data.day_of_birth))
+        select_day.select_by_value(str(user_data.date_of_birth.day))
         select_month = Select(self.browser.find_element(*SignupPageLocators.MONTH_OF_BIRTH_SELECT))
-        select_month.select_by_value(str(user_data.month_of_birth))
+        select_month.select_by_value(str(user_data.date_of_birth.month))
         select_year = Select(self.browser.find_element(*SignupPageLocators.YEAR_OF_BIRTH_SELECT))
-        select_year.select_by_value(str(user_data.year_of_birth))
+        select_year.select_by_value(str(user_data.date_of_birth.year))
 
     def select_newsletter_checkbox(self):
         checkbox_newsletter = self.browser.find_element(*SignupPageLocators.NEWSLETTER_CHECKBOX)

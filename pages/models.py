@@ -1,3 +1,4 @@
+import datetime
 from dataclasses import dataclass
 
 
@@ -23,7 +24,4 @@ class UserData:
     email: str
     title: str
     password: str
-    date_of_birth: str
-    day_of_birth: int
-    month_of_birth: int
-    year_of_birth: int
+    date_of_birth: datetime

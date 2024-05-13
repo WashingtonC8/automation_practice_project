@@ -12,11 +12,7 @@ def generate_user_data():
     title = fake.random_element(elements=('Mr', 'Mrs'))
     password = fake.password()
     date_of_birth = fake.date_of_birth(minimum_age=18, maximum_age=90)
-    day_of_birth = fake.random_int(min=1, max=28)
-    month_of_birth = fake.random_int(min=1, max=12)
-    year_of_birth = fake.random_int(min=1900, max=2021)
-    return UserData(name=name, email=email, title=title, password=password, day_of_birth=day_of_birth,
-                    month_of_birth=month_of_birth, year_of_birth=year_of_birth, date_of_birth=date_of_birth)
+    return UserData(name=name, email=email, title=title, password=password, date_of_birth=date_of_birth)
 
 
 @pytest.fixture()
