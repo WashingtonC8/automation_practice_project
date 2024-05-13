@@ -3,6 +3,7 @@ from pages.variables import Pages
 from pages.variables import Titles
 from .locators import MainPageLocators
 from .locators import BasePageLocators
+from .models import UserData
 
 
 class MainPage(BasePage):
@@ -17,7 +18,7 @@ class MainPage(BasePage):
     def should_be_slider_carousel_main_page(self):
         assert self.is_element_present(*MainPageLocators.SLIDER_CAROUSEL_MAIN)
 
-    def should_be_expected_name(self, name):
+    def should_be_expected_name(self, user_data=UserData ):
         logged_name_label = self.browser.find_element(*BasePageLocators.LOGGED_NAME)
         logged_name = logged_name_label.text
-        assert logged_name == name, "The name of the logged in user does not match the one entered"
+        assert logged_name == user_data.name, "The name of the logged in user does not match the one entered"

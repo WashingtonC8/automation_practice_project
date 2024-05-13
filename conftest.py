@@ -1,48 +1,28 @@
 import pytest
-import faker
+import yaml
 from selenium import webdriver
 
 
-@pytest.fixture(scope="session")
-def browser():
-    print("\nstart browser for test..")
-    browser = webdriver.Chrome()
+def pytest_addoption(parser):
+    parser.addoption('--config', action='store', default="config.yaml",
+                     help="Path to the configuration file")
+
+
+@pytest.fixture(scope="function")
+def browser(request):
+    config_file = request.config.getoption("config")
+    with open(config_file) as file:
+        config = yaml.safe_load(file)
+    browser_name = config.get("browser_name", "chrome")
+    browser = None
+    if browser_name == "chrome":
+        print("\nstart chrome browser for test..")
+        browser = webdriver.Chrome()
+    elif browser_name == "firefox":
+        print("\nstart firefox browser for test..")
+        browser = webdriver.Firefox()
+    else:
+        raise pytest.UsageError("--browser_name should be chrome or firefox")
     yield browser
     print("\nquit browser..")
     browser.quit()
-
-
-@pytest.fixture()
-def generate_user_data():
-    fake = faker.Faker()
-    name = fake.name()
-    email = fake.email()
-    title = fake.random_element(elements=('Mr', 'Mrs'))
-    password = fake.password()
-    date_of_birth = fake.date_of_birth(minimum_age=18, maximum_age=90)
-    day_of_birth = fake.random_int(min=1, max=28)
-    month_of_birth = fake.random_int(min=1, max=12)
-    year_of_birth = fake.random_int(min=1900, max=2021)
-    return {"name": name, "email": email, "title": title, "password": password, "day_of_birth": day_of_birth,
-            "month_of_birth": month_of_birth, "year_of_birth": year_of_birth, "date_of_birth": date_of_birth}
-
-
-@pytest.fixture()
-def generate_address_information_data():
-    fake = faker.Faker()
-    first_name = fake.first_name()
-    last_name = fake.last_name()
-    company = fake.company()
-    address_2 = fake.address()
-    countries = ['India', 'United States', 'Canada', 'Australia', 'Israel', 'New Zealand', 'Singapore']
-    country = fake.random_element(countries)
-    state = fake.state()
-    city = fake.city()
-    zipcode = fake.zipcode()
-    mobile_number = fake.phone_number()
-    street_address = fake.street_address()
-    po_box = fake.random_number(digits=5)
-    address = f"{street_address}, P.O. Box {po_box}, {company}"
-    return {"first_name": first_name, "last_name": last_name, "company": company, "address_2": address_2,
-            "country": country, "state": state, "city": city, "zipcode": zipcode, "mobile_number": mobile_number,
-            "street_address": street_address, "po_box": po_box, "address": address}
