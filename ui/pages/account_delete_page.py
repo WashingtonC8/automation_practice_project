@@ -1,5 +1,5 @@
-from .base_page import BasePage
-from .locators import AccountDeleteLocators
+from ui.pages.base_page import BasePage
+from ui.locators import account_delete_page_locators
 
 
 class AccountDeletePage(BasePage):
@@ -7,5 +7,5 @@ class AccountDeletePage(BasePage):
         super(AccountDeletePage, self).__init__(*args, **kwargs)
 
     def should_be_account_deleted_is_visible(self):
-        assert self.is_element_present(*AccountDeleteLocators.ACCOUNT_DELETE_LABEL), 'Label "Accont deleted!" is not ' \
+        assert self.is_element_present(*account_delete_page_locators.ACCOUNT_DELETE_LABEL), 'Label "Accont deleted!" is not ' \
                                                                                    'present'

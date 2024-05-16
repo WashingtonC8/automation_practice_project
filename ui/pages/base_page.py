@@ -1,5 +1,4 @@
 from selenium.common.exceptions import NoSuchElementException
-from .locators import BasePageLocators
 
 
 class BasePage():
@@ -23,12 +22,4 @@ class BasePage():
 
     def should_be_expected_title(self, expected_title):
         assert expected_title == self.browser.title, "The wrong TITLE page is open"
-
-    def go_to_login_page(self):
-        login_link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
-        login_link.click()
-
-    def click_to_delete_account_link(self):
-        delete_link = self.browser.find_element(*BasePageLocators.DELETE_ACCOUNT_LINK)
-        delete_link.click()
 

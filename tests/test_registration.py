@@ -1,12 +1,12 @@
-import time
 import pytest
-from pages.variables import Pages
-from pages.login_page import LoginPage
-from pages.main_page import MainPage
-from pages.account_created_page import AccountCreatedPage
-from pages.signup_page import SignupPage
-from pages.account_delete_page import AccountDeletePage
-from fixtures.generate_user_data_fixtures import generate_user_data, generate_address_information_data
+from ui.page_static import main_page_static
+from ui.pages.login_page import LoginPage
+from ui.pages.main_page import MainPage
+from ui.pages.account_created_page import AccountCreatedPage
+from ui.pages.signup_page import SignupPage
+from ui.pages.account_delete_page import AccountDeletePage
+from data.fixtures.generate_user_data_fixtures import generate_user_data
+from data.fixtures.generate_adress_information_data_fixtures import generate_address_information_data
 
 
 @pytest.fixture(scope='function')
@@ -19,8 +19,8 @@ def teardown(browser):
 
 
 @pytest.mark.usefixtures("teardown")
-def test_register_user(browser,generate_user_data, generate_address_information_data):
-    page = MainPage(browser, url=Pages.MAIN_PAGE_URL) # инициализируем главную страницу
+def test_register_user(browser, generate_user_data, generate_address_information_data):
+    page = MainPage(browser, url=main_page_static.MAIN_PAGE_URL) # инициализируем главную страницу
     page.open() # открываем браузер
     page.should_be_main_page() # набор проверок того, что открыта главная
     page.go_to_login_page() # метод перехода на страницу регистрации
