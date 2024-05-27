@@ -18,11 +18,31 @@ class LoginPage(BasePage):
         self.should_be_user_signup_is_visible()
 
     def enter_name_and_email_to_sign_up_form(self, user_data=UserData):
-        input_name = self.browser.find_element(*login_page_locators.NAME_INPUT_LOGIN_PAGE)
+        input_name = self.browser.find_element(*login_page_locators.NAME_INPUT_SIGNUP_FORM)
         input_name.send_keys(user_data.name)
-        input_email = self.browser.find_element(*login_page_locators.EMAIL_INPUT_LOGIN_PAGE)
+        input_email = self.browser.find_element(*login_page_locators.EMAIL_INPUT_SIGNUP_FORM)
         input_email.send_keys(user_data.email)
 
     def click_sign_up_form_button(self):
-        button_sign_up = self.browser.find_element(*login_page_locators.SIGN_UP_BUTTON)
+        button_sign_up = self.browser.find_element(*login_page_locators.SIGN_UP_FORM_BUTTON)
         button_sign_up.click()
+
+    def click_login_form_button(self):
+        button_sign_up = self.browser.find_element(*login_page_locators.LOGIN_FORM_BUTTON)
+        button_sign_up.click()
+
+    def enter_name_and_email_to_login_form(self, user_data=UserData):
+        input_email = self.browser.find_element(*login_page_locators.EMAIL_INPUT_LOGIN_FORM)
+        input_email.send_keys(user_data.email)
+        input_password = self.browser.find_element(*login_page_locators.PASSWORD_INPUT_LOGIN_FORM)
+        input_password.send_keys(user_data.password)
+
+    def enter_name_and_incorrect_email_to_login_form(self, user_data=UserData):
+        input_email = self.browser.find_element(*login_page_locators.EMAIL_INPUT_LOGIN_FORM)
+        input_email.send_keys(user_data.email)
+        input_password = self.browser.find_element(*login_page_locators.PASSWORD_INPUT_LOGIN_FORM)
+        input_password.send_keys(user_data.password)
+
+    def should_be_incorrect_email_login_form_error(self):
+        assert self.is_element_present(*login_page_locators.VALIDATION_ERROR_YOUR_EMAIL_OR_PASSWORD_INCORRECT_LOGIN_FORM),\
+                                                                                               "Error is not present"
