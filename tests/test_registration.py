@@ -64,7 +64,6 @@ def teardown_after_logout(browser):
     account_deleted_page.should_be_account_deleted_is_visible()  # проверка наличия надписи о том, что акк удален
 
 
-
 @pytest.mark.usefixtures("teardown")
 def test_register_user(browser, generate_user_data, generate_address_information_data):
     page = MainPage(browser, url=main_page_static.MAIN_PAGE_URL)  # инициализируем главную страницу

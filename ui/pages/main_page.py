@@ -26,9 +26,7 @@ class MainPage(BasePage):
         login_link.click()
 
     def click_to_delete_account_link(self):
-        delete_link = self.browser.find_element(*main_page_locators.DELETE_ACCOUNT_LINK)
-        delete_link.click()
+        self.click_element(*main_page_locators.DELETE_ACCOUNT_LINK)
 
     def click_to_logout_link(self):
-        logout_link = self.browser.find_element(*main_page_locators.LOGOUT_LINK)
-        logout_link.click()
+        self.click_element(*main_page_locators.LOGOUT_LINK)

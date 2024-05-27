@@ -24,12 +24,10 @@ class LoginPage(BasePage):
         input_email.send_keys(user_data.email)
 
     def click_sign_up_form_button(self):
-        button_sign_up = self.browser.find_element(*login_page_locators.SIGN_UP_FORM_BUTTON)
-        button_sign_up.click()
+        self.click_element(*login_page_locators.SIGN_UP_FORM_BUTTON)
 
     def click_login_form_button(self):
-        button_sign_up = self.browser.find_element(*login_page_locators.LOGIN_FORM_BUTTON)
-        button_sign_up.click()
+        self.click_element(*login_page_locators.LOGIN_FORM_BUTTON)
 
     def enter_name_and_email_to_login_form(self, user_data=UserData):
         input_email = self.browser.find_element(*login_page_locators.EMAIL_INPUT_LOGIN_FORM)

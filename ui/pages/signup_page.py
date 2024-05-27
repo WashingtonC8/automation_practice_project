@@ -21,11 +21,9 @@ class SignupPage(BasePage):
 
     def gender_selection(self, user_data=UserData):
         if user_data.title == "Mr":
-            checkbox_mr = self.browser.find_element(*signup_page_locators.GENDER_MR_CHECKBOX)
-            checkbox_mr.click()
+            self.click_element(*signup_page_locators.GENDER_MR_CHECKBOX)
         elif user_data.title == "Mrs":
-            checkbox_mrs = self.browser.find_element(*signup_page_locators.GENDER_MRS_CHECKBOX)
-            checkbox_mrs.click()
+            self.click_element(*signup_page_locators.GENDER_MRS_CHECKBOX)
 
     def enter_password(self, user_data=UserData):
         input_password = self.browser.find_element(*signup_page_locators.PASSWORD_LABEL)
@@ -40,12 +38,10 @@ class SignupPage(BasePage):
         select_year.select_by_value(str(user_data.date_of_birth.year))
 
     def select_newsletter_checkbox(self):
-        checkbox_newsletter = self.browser.find_element(*signup_page_locators.NEWSLETTER_CHECKBOX)
-        checkbox_newsletter.click()
+        self.click_element(*signup_page_locators.NEWSLETTER_CHECKBOX)
 
     def select_offers_from_partners_checkbox(self):
-        checkbox_partners = self.browser.find_element(*signup_page_locators.OFFERS_FROM_PARTNERS_CHECKBOX)
-        checkbox_partners.click()
+        self.click_element(*signup_page_locators.OFFERS_FROM_PARTNERS_CHECKBOX)
 
     def enter_first_name(self, address_information: AddressInformation):
         input_first_name = self.browser.find_element(*signup_page_locators.FIRST_NAME_INPUT)
@@ -100,5 +96,4 @@ class SignupPage(BasePage):
         self.enter_mobile_number(address_information)
 
     def click_create_account_button(self):
-        button_create_account = self.browser.find_element(*signup_page_locators.CREATE_ACCOUNT_BUTTON)
-        button_create_account.click()
+        self.click_element(*signup_page_locators.CREATE_ACCOUNT_BUTTON)
