@@ -22,8 +22,7 @@ class MainPage(BasePage):
         assert logged_name == user_data.name, "The name of the logged in user does not match the one entered"
 
     def go_to_login_page(self):
-        login_link = self.browser.find_element(*main_page_locators.LOGIN_LINK)
-        login_link.click()
+        self.click_element(*main_page_locators.LOGIN_LINK)
 
     def click_to_delete_account_link(self):
         self.click_element(*main_page_locators.DELETE_ACCOUNT_LINK)

@@ -16,7 +16,7 @@ def setup(browser, generate_user_data, generate_address_information_data):
     login_page.open()  # открываем браузер
     login_page.should_be_login_page()  # набор проверок того, что открыта страница логина
     user_data = generate_user_data  # получение словаря со сгенерированными данными
-    login_page.enter_name_and_email_to_sign_up_form(user_data)  # ввод name и email на странице
+    login_page.enter_name_and_email_to_sign_up_form_test(user_data)  # ввод name и email на странице
     login_page.click_sign_up_form_button()  # клик по кнопке "signup"
     signup_page = SignupPage(browser, browser.current_url)  # инициализация открытой страницы регистрации
     signup_page.should_be_enter_account_information_is_visible()  # Надпись "ENTER ACCOUNT INFORMATION" видна
@@ -46,7 +46,7 @@ def teardown(browser):
 
 
 @pytest.fixture(scope='function')
-def teardown_after_logout(browser):
+def teardown_after_logout(browser, generate_user_data):
     yield
     page = MainPage(browser, url=main_page_static.MAIN_PAGE_URL)  # инициализируем главную страницу
     page.open()  # открываем браузер
@@ -73,7 +73,7 @@ def test_register_user(browser, generate_user_data, generate_address_information
     login_page = LoginPage(browser, browser.current_url)  # инициализация открытой страницы логина
     login_page.should_be_login_page()  # набор проверок того, что открыта страница логина
     user_data = generate_user_data  # получение словаря со сгенерированными данными
-    login_page.enter_name_and_email_to_sign_up_form(user_data)  # ввод name и email на странице
+    login_page.enter_name_and_email_to_sign_up_form_test(user_data)  # ввод name и email на странице
     login_page.click_sign_up_form_button()  # клик по кнопке "signup"
     signup_page = SignupPage(browser, browser.current_url)  # инициализация открытой страницы регистрации
     signup_page.should_be_enter_account_information_is_visible()  # Надпись "ENTER ACCOUNT INFORMATION" видна
@@ -114,7 +114,7 @@ def test_login_user_with_incorrect_email_and_password(browser, generate_user_dat
     login_page = LoginPage(browser, browser.current_url)  # инициализация открытой страницы логина
     login_page.should_be_login_page()  # набор проверок того, что открыта страница логина
     user_data = generate_user_data  # получение словаря со сгенерированными данными
-    login_page.enter_name_and_incorrect_email_to_login_form(user_data)  # вводим данные ранее зарегистрированного
+    login_page.enter_name_and_email_to_login_form(user_data)  # вводим данные ранее зарегистрированного
     # пользователя
     login_page.click_login_form_button()  # клик по кнопке "Login"
     login_page.should_be_incorrect_email_login_form_error()  # проверка наличия ошибки о вводе некорректного email
