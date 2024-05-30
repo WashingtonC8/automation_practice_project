@@ -22,3 +22,4 @@ ZIPCODE_INPUT = (By.CSS_SELECTOR, '[data-qa="zipcode"]')
 MOBILE_NUMBER_INPUT = (By.CSS_SELECTOR, '[data-qa="mobile_number"]')
 
 CREATE_ACCOUNT_BUTTON = (By.CSS_SELECTOR, '[data-qa="create-account"]')
+VALIDATION_ERROR_YOUR_EMAIL_AlREADY_EXIST_SIGNUP_FORM = (By.CSS_SELECTOR, ".signup-form p[style='color: red;']")

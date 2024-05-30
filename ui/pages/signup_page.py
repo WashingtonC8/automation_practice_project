@@ -11,8 +11,8 @@ class SignupPage(BasePage):
 
     def should_be_enter_account_information_is_visible(self):
         assert self.is_element_present(*signup_page_locators.ENTER_ACCOUNT_INFORMATION_LABEL), 'Label "ENTER ACCOUNT' \
-                                                                                             ' INFORMATION" ' \
-                                                                                             'is not present'
+                                                                                               ' INFORMATION" ' \
+                                                                                               'is not present'
 
     def fill_details_enter_account_information(self, user_data=UserData):
         self.gender_selection(user_data)
@@ -86,3 +86,7 @@ class SignupPage(BasePage):
 
     def click_create_account_button(self):
         self.click_element(*signup_page_locators.CREATE_ACCOUNT_BUTTON)
+
+    def should_be_email_already_exist_signup_form_error(self):
+        assert self.is_element_present(
+            *signup_page_locators.VALIDATION_ERROR_YOUR_EMAIL_AlREADY_EXIST_SIGNUP_FORM), "Error is not present"

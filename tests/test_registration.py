@@ -136,3 +136,18 @@ def test_logout_user(browser, generate_user_data):
     page.click_to_logout_link()  # выходим из аккаунта
     login_page = LoginPage(browser, browser.current_url)  # инициализация открытой страницы логина
     login_page.should_be_login_page()  # набор проверок того, что открыта страница логина
+
+
+@pytest.mark.usefixtures("setup")
+def test_register_user_with_existing_email(browser, generate_user_data):
+    page = MainPage(browser, url=main_page_static.MAIN_PAGE_URL)  # инициализируем главную страницу
+    page.open()  # открываем браузер
+    page.should_be_main_page()  # набор проверок того, что открыта главная
+    page.go_to_login_page()  # метод перехода на страницу регистрации
+    login_page = LoginPage(browser, browser.current_url)  # инициализация открытой страницы логина
+    login_page.should_be_login_page()  # набор проверок того, что открыта страница логина
+    user_data = generate_user_data  # получение словаря со сгенерированными данными
+    login_page.enter_name_and_email_to_sign_up_form_test(user_data)  # ввод name и email на странице
+    login_page.click_sign_up_form_button()  # клик по кнопке "signup"
+    signup_page = SignupPage(browser, browser.current_url) # инициализация открытой страницы регистрации
+    signup_page.should_be_email_already_exist_signup_form_error() # проверка наличия ошибки о вводе существующего email
