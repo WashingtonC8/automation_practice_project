@@ -22,7 +22,7 @@ class SignupPage(BasePage):
     def gender_selection(self, user_data=UserData):
         if user_data.title == "Mr":
             self.click_element(*signup_page_locators.GENDER_MR_CHECKBOX)
-        elif user_data.title == "Mrs":
+        else:
             self.click_element(*signup_page_locators.GENDER_MRS_CHECKBOX)
 
     def enter_password(self, user_data=UserData):

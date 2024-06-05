@@ -29,3 +29,6 @@ class MainPage(BasePage):
 
     def click_to_logout_link(self):
         self.click_element(*main_page_locators.LOGOUT_LINK)
+
+    def go_to_contact_us_page(self):
+        self.click_element(*main_page_locators.CONTACT_US_LINK)

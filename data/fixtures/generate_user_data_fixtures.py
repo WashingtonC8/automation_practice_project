@@ -12,4 +12,3 @@ def generate_user_data():
     password = fake.password()
     date_of_birth = fake.date_of_birth(minimum_age=18, maximum_age=90)
     return UserData(name=name, email=email, title=title, password=password, date_of_birth=date_of_birth)
-
