@@ -1,4 +1,3 @@
-import os
 import tempfile
 from data.models.user_data_contact_us_model import UserDataContactUs
 import pytest
@@ -10,7 +9,7 @@ def generate_user_data_contact_us():
     fake = faker.Faker()
     name = fake.name()
     email = fake.email()
-    subject = fake.subject()
+    subject = fake.text()
     message = fake.text()
     random_text = fake.text()
     temp_file = tempfile.NamedTemporaryFile(delete=False, mode='w', suffix='.txt')

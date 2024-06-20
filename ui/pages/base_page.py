@@ -47,4 +47,7 @@ class BasePage():
     def should_be_expected_title(self, expected_title):
         assert expected_title == self.browser.title, "The wrong TITLE page is open"
 
-
+    def accept_to_confirm_window(self, timeout=15):
+        WebDriverWait(self.browser, timeout).until(EC.alert_is_present())
+        confirm = self.browser.switch_to.alert
+        confirm.accept()
