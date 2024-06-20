@@ -16,7 +16,6 @@ class ContactUsPage(MainPage):
         self.enter_email_contact_us_form(user_data_contact_us)
         self.enter_subject_contact_us_form(user_data_contact_us)
         self.enter_message_contact_us_form(user_data_contact_us)
-        self.enter_file_path_contact_us_form(user_data_contact_us)
 
     def enter_name_contact_us_form(self, user_data_contact_us=UserDataContactUs):
         self.pasted_text(*contact_us_page_locators.NAME_INPUT_CONTACT_FORM, user_data_contact_us.name)
@@ -35,3 +34,11 @@ class ContactUsPage(MainPage):
 
     def click_to_submit_button_contact_us_form(self):
         self.click_element(*contact_us_page_locators.SUBMIT_BUTTON_CONTACT_FORM)
+
+    def accept_to_confirm_window_contact_us_form(self):
+        self.accept_to_confirm_window()
+
+    def should_be_success_alert_is_visible(self):
+        assert self.is_element_present(*contact_us_page_locators.SUCCESS_ALERT_CONTACT_FORM), 'Label "Success! Your'\
+                                                                                              'details have been submitted'\
+                                                                                              'successfully" is not present'
