@@ -16,7 +16,7 @@ class MainPage(BasePage):
     def should_be_slider_carousel_main_page(self):
         assert self.is_element_present(*main_page_locators.SLIDER_CAROUSEL_MAIN)
 
-    def should_be_expected_name(self, user_data=UserData):
+    def should_be_expected_username(self, user_data=UserData):
         logged_name_label = self.browser.find_element(*main_page_locators.LOGGED_NAME)
         logged_name = logged_name_label.text
         assert logged_name == user_data.name, "The name of the logged in user does not match the one entered"
@@ -32,3 +32,6 @@ class MainPage(BasePage):
 
     def go_to_contact_us_page(self):
         self.click_element(*main_page_locators.CONTACT_US_LINK)
+
+    def go_to_test_cases_page(self):
+        self.click_element(*main_page_locators.TEST_CASES_LINK)
