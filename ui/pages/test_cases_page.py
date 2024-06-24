@@ -3,9 +3,9 @@ from ui.locators import test_cases_page_locators
 from ui.page_static import test_cases_page_static
 
 
-class TestcasesPage(MainPage):
+class PageTestCases(MainPage):
     def __init__(self, *args, **kwargs):
-        super(TestcasesPage, self).__init__(*args, **kwargs)
+        super(PageTestCases, self).__init__(*args, **kwargs)
 
     def should_be_test_cases_title_is_visible(self):
         assert self.is_element_present(*test_cases_page_locators.TEST_CASES_TITLE_LABEL), 'Label "TEST CASES" is not' \
